@@ -1,3 +1,7 @@
+#2019 team project CODE
+##DO NOT USE THIS CODE FOR MALICIOUS PURPOSES
+#THIS IS ONLY FOR EDUCATIONAL PURPOSES
+
 import os, glob, sys
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256 as sha

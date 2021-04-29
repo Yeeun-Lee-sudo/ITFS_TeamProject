@@ -1,5 +1,6 @@
 ##DO NOT USE THIS CODE FOR MALICIOUS PURPOSES
 #THIS IS ONLY FOR EDUCATIONAL PURPOSES
+#This MUST be executed before backdoorClient
 #ref. https://dev.to/tman540/simple-remote-backdoor-with-python-33a0
 
 import socket

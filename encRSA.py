@@ -1,4 +1,7 @@
-rimport os, glob, sys
+##DO NOT USE THIS CODE FOR MALICIOUS PURPOSES
+#THIS IS ONLY FOR EDUCATIONAL PURPOSES
+
+import os, glob, sys
 from Crypto.PublicKey import RSA
 
 KSIZE = 1024
