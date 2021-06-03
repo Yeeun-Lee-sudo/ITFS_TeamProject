@@ -7,11 +7,6 @@ from Crypto.Cipher import AES
 from Crypto.Hash import SHA256 as sha
 
 import socket
-import subprocess
-import platform
-import getpass
-import colorama
-from colorama import Fore, Style
 from time import sleep
 
 KSIZE = 1024
