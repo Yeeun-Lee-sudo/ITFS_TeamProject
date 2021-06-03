@@ -113,7 +113,7 @@ def searchDecFile(path):
 colorama.init(autoreset=True)
 
 #change before install on virtual machine
-RHOST = "192.168.163.1"
+RHOST = "192.168.56.1"
 RPORT = 2222
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
